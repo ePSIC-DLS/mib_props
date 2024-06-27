@@ -129,7 +129,8 @@ def mib_props(mib_path, max_header_index=-1, **kwargs):
 
     cdef FILE* f
     cdef char header_id[4]
-    cdef unsigned int header_bytes, num_chips, det_x, det_y, frame_stride, num_headers, num_parsed
+    cdef char pixel_depth[4]
+    cdef unsigned int header_bytes, num_chips, det_x, det_y, px_nbytes, frame_stride, num_headers, num_parsed
     cdef long int max_hidx = max_header_index
     cdef mq1s* mq1s_ptr
     cdef mq1q* mq1q_ptr
@@ -151,8 +152,23 @@ def mib_props(mib_path, max_header_index=-1, **kwargs):
                            &header_bytes,
                            &num_chips,
                            &det_x,
-                           &det_y
+                           &det_y,
+                           pixel_depth
                            )
+
+    # according to the pixel depth, set the number of bytes for each pixel
+    if ((pixel_depth == b"U01") or (pixel_depth == b"U08")):
+        px_nbytes = 1
+    elif (pixel_depth == b"U16"):
+        px_nbytes = 2
+    elif (pixel_depth == b"U32"):
+        px_nbytes = 4
+    elif (pixel_depth == b"U64"):
+        px_nbytes = 8
+    else:
+        msg = (f"The pixel depth {pixel_depth.decode()} is not supported. "
+                "Supported pixe depth are U01, U08, U16, U32 and U64.")
+        raise ValueError(msg)
 
     # check if this is from 'MQ1'
     if (header_id != b"MQ1"):
@@ -161,7 +177,7 @@ def mib_props(mib_path, max_header_index=-1, **kwargs):
         raise ValueError(msg)
 
     # unlikely to overflow
-    frame_stride = header_bytes + det_x * det_y
+    frame_stride = header_bytes + det_x * det_y * px_nbytes
 
     # determine the number of headers/frames in the MIB file
     # it returns 0 if it fails to determine
@@ -195,7 +211,7 @@ def mib_props(mib_path, max_header_index=-1, **kwargs):
 
         num_parsed = mq1_single_from_file(f,
                                           num_headers,
-                                          det_x*det_y,
+                                          det_x*det_y*px_nbytes,
                                           mq1s_ptr,
                                           &mq1_fields
                                           )
@@ -215,7 +231,7 @@ def mib_props(mib_path, max_header_index=-1, **kwargs):
 
         num_parsed = mq1_quad_from_file(f,
                                         num_headers,
-                                        det_x*det_y,
+                                        det_x*det_y*px_nbytes,
                                         mq1q_ptr,
                                         &mq1_fields
                                         )
