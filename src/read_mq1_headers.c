@@ -13,7 +13,7 @@
 unsigned int mq1_single_from_file(
     FILE* mib_ptr,
     unsigned int nheaders,
-    unsigned int detector_size,
+    unsigned int detector_frame_bytes,
     mq1s* mq1s_h,
     MQ1_fields* mq1_fields
     )
@@ -42,7 +42,7 @@ unsigned int mq1_single_from_file(
 
     /*move the file by the size of the detector*/
     /*i.e. point to the next header*/
-    fseek(mib_ptr, (long int)detector_size, SEEK_CUR);
+    fseek(mib_ptr, (long int)detector_frame_bytes, SEEK_CUR);
   }
 
   /*go to the beginning after parsing*/
@@ -59,7 +59,7 @@ unsigned int mq1_single_from_file(
 unsigned int mq1_quad_from_file(
     FILE* mib_ptr,
     unsigned int nheaders,
-    unsigned int detector_size,
+    unsigned int detector_frame_bytes,
     mq1q* mq1q_h,
     MQ1_fields* mq1_fields
     )
@@ -88,7 +88,7 @@ unsigned int mq1_quad_from_file(
 
     /*move the file by the size of the detector*/
     /*i.e. point to the next header*/
-    fseek(mib_ptr, (long int)detector_size, SEEK_CUR);
+    fseek(mib_ptr, (long int)detector_frame_bytes, SEEK_CUR);
   }
 
   /*go to the beginning after parsing*/

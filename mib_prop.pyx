@@ -46,14 +46,14 @@ cdef extern from "src/read_mq1_headers.h":
     unsigned int mq1_single_from_file(
             FILE* mib_ptr,
             unsigned int nheaders,
-            unsigned int detector_size,
+            unsigned int detector_frame_bytes,
             mq1s* mq1s_h,
             MQ1_fields* mq1_fields,
             )
     unsigned int mq1_quad_from_file(
             FILE* mib_ptr,
             unsigned int nheaders,
-            unsigned int detector_size,
+            unsigned int detector_frame_bytes,
             mq1q* mq1q_h,
             MQ1_fields* mq1_fields,
             )
