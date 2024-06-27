@@ -64,7 +64,8 @@ cdef extern from "src/mib_utils.h":
                                 unsigned int* header_bytes,
                                 unsigned int* num_chips,
                                 unsigned int* det_x,
-                                unsigned int* det_y
+                                unsigned int* det_y,
+                                char* pixel_depth
                                 )
     unsigned int num_of_headers(FILE* mib_ptr,
                                 const unsigned int stride

@@ -31,6 +31,7 @@ unsigned int num_of_headers(
   file_size = ftell(mib_ptr);
 
   /*printf("File size: %ld\n", file_size);*/
+  /*printf("Stride: %u\n", stride);*/
 
   if (stride == 0) {
     const char* current_file = only_file_name(__FILE__);
@@ -65,7 +66,8 @@ void header_meta_from_first(
     unsigned int* header_bytes,
     unsigned int* num_chips,
     unsigned int* det_x,
-    unsigned int* det_y
+    unsigned int* det_y,
+    char* pixel_depth
     )
 {
   char header_buf[40];
@@ -88,10 +90,10 @@ void header_meta_from_first(
   }
 
   /*assign value (skip sequence number)*/
-  int n = sscanf(header_buf, "%3s,%*[^,],%u,%u,%u,%u", header_id, header_bytes, num_chips, det_x, det_y);
+  int n = sscanf(header_buf, "%3s,%*[^,],%u,%u,%u,%u,%[^,]", header_id, header_bytes, num_chips, det_x, det_y, pixel_depth);
 
   /*fail to assign enough value */
-  if (n != 5) {
+  if (n != 6) {
     const char* current_file = only_file_name(__FILE__);
     fprintf(stderr, "%s:%d: error: failed to assign header meta value\n", current_file, __LINE__);
     goto restore;

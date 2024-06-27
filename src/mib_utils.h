@@ -11,7 +11,7 @@ unsigned int num_of_headers(
     FILE* mib_ptr,
     const unsigned int stride
     );
-#endif /*NUM_OF_HEADERS_H*/
+#endif
 
 #ifndef HEADER_META_FROM_FIRST_H
 #define HEADER_META_FROM_FIRST_H
@@ -21,6 +21,7 @@ void header_meta_from_first(
     unsigned int* header_bytes,
     unsigned int* num_chips,
     unsigned int* det_x,
-    unsigned int* det_y
+    unsigned int* det_y,
+    char* pixel_depth
     );
-#endif /*HEADER_META_FROM_FIRST_H*/
+#endif
