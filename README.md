@@ -159,7 +159,8 @@ unsigned int mq1_single_from_file(FILE* mib_ptr,
                                   )
 ```
 
-The function parses frame headers from a Merlin Single .mib file.
+The function parses frame headers from a Merlin Single .mib file. It returns
+the number of successfully parsed headers.
 
 - *mib_ptr*
 
@@ -197,7 +198,8 @@ unsigned int mq1_quad_from_file(FILE* mib_ptr,
                                 )
 ```
 
-The function parses frame headers from a Merlin Quad .mib file.
+The function parses frame headers from a Merlin Quad .mib file. It returns
+the number of successfully parsed headers.
 
 - *mib_ptr*
 
@@ -265,7 +267,8 @@ void fill_MQ1_single_fields(MQ1_fields* mq1_field,
 ```
 
 The function populates the fields `mq1_field` by the information from Merlin
-Single header in `mq1_h`.
+Single header in `mq1_h`. It exits with code 1 if the index is larger than the
+number of fields allocated in `mq1_field`.
 
 - *mq1_field*
 
@@ -291,7 +294,8 @@ void fill_MQ1_quad_fields(MQ1_fields* mq1_field,
 ```
 
 The function populates the fields `mq1_field` by the information from Merlin
-Quad header in `mq1_h`.
+Quad header in `mq1_h`. It exits with code 1 if the index is larger than the
+number of fields allocated in `mq1_field`.
 
 - *mq1_field*
 
@@ -318,7 +322,8 @@ void parse_mq1_single(const char* header,
 ```
 
 The function parses a frame header from Merlin Single system and stores the
-fields into `mq1_single`.
+fields into `mq1_single`. It exits with code 1 if there is any problem parsing
+the header.
 
 - *header*
 
@@ -355,7 +360,8 @@ void parse_mq1_quad(const char* header,
 ```
 
 The function parses a frame header from Merlin Quad system and stores the
-fields into `mq1_quad`.
+fields into `mq1_quad`. It exits with code 1 if there is any problem parsing
+the header.
 
 - *header*
 
@@ -391,7 +397,8 @@ unsigned int num_of_headers(FILE* mib_ptr,
                             )
 ```
 
-The function returns the total number of frame headers in the .mib file.
+The function returns the total number of frame headers in the .mib file. It
+returns 0 if it cannot determine the number of frame headers.
 
 - *mib_ptr*
 
