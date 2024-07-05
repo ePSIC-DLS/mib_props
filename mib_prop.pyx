@@ -121,7 +121,45 @@ cdef str_list_from_field(
     return str_list
 
 def mib_props(mib_path, max_header_index=-1, **kwargs):
-    """Return a dictionary for
+    """Return the specified fields of a .mib header.
+
+    Parameters
+    ----------
+    mib_path : str
+        the path to the .mib file.
+    max_header_index : int, optional
+        the number of headers to be parsed. Default to -1, which will
+        parse all the headers in the .mib file.
+
+    The following parameters can be set to True to return the
+    corresponding field:
+
+    - sequence_number (header ID)
+    - header_bytes (acquisition sequence number)
+    - num_chips (data offset)
+    - det_x (pixel dimension X)
+    - det_y (pixel dimension Y)
+    - pixel_depth (pixel depth in file)
+    - sensor_layout (sensor layout)
+    - chip_select (chip select)
+    - timestamp (time stamp)
+    - exposure_time_s (acquisition shutter time in s)
+    - counter (counter)
+    - colour_mode (colour mode)
+    - gain_mode (gain mode)
+    - threshold (threshold, 0-7)
+    - header_extension_id (header extension ID)
+    - extended_timestamp (extended time stamp)
+    - exposure_time_ns (acquisition shutter time in ns)
+    - bit_depth (counter depth)
+
+    Any unrecognised field/parameter will be ignored.
+
+    Returns
+    -------
+    ret : dict
+        the specified field in the .mib header
+
     """
     # separate to avoid creation of temporary Python object
     fbytes = mib_path.encode()
