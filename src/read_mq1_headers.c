@@ -273,13 +273,13 @@ void fill_MQ1_single_fields(
   mq1_field->det_x[index] = mq1_h.det_x;
   mq1_field->det_y[index] = mq1_h.det_y;
   /*pixel_depth is char[4]*/
-  snprintf(mq1_field->pixel_depth + index*MQ1_CHAR_LEN_PIXEL_DEPTH, MQ1_CHAR_LEN_PIXEL_DEPTH, mq1_h.pixel_depth);
+  snprintf(mq1_field->pixel_depth + index*MQ1_CHAR_LEN_PIXEL_DEPTH, MQ1_CHAR_LEN_PIXEL_DEPTH, "%s", mq1_h.pixel_depth);
   /*sensor_layout is char[7]*/
-  snprintf(mq1_field->sensor_layout + index*MQ1_CHAR_LEN_SENSOR_LAYOUT, MQ1_CHAR_LEN_SENSOR_LAYOUT, mq1_h.sensor_layout);
+  snprintf(mq1_field->sensor_layout + index*MQ1_CHAR_LEN_SENSOR_LAYOUT, MQ1_CHAR_LEN_SENSOR_LAYOUT, "%s", mq1_h.sensor_layout);
   /*chip_select is char[3]*/
-  snprintf(mq1_field->chip_select + index*MQ1_CHAR_LEN_CHIP_SELECT, MQ1_CHAR_LEN_CHIP_SELECT, mq1_h.chip_select);
+  snprintf(mq1_field->chip_select + index*MQ1_CHAR_LEN_CHIP_SELECT, MQ1_CHAR_LEN_CHIP_SELECT, "%s", mq1_h.chip_select);
   /*timestamp is char[27]*/
-  snprintf(mq1_field->timestamp + index*MQ1_CHAR_LEN_TIMESTAMP, MQ1_CHAR_LEN_TIMESTAMP, mq1_h.timestamp);
+  snprintf(mq1_field->timestamp + index*MQ1_CHAR_LEN_TIMESTAMP, MQ1_CHAR_LEN_TIMESTAMP, "%s", mq1_h.timestamp);
   mq1_field->exposure_time_s[index] = mq1_h.exposure_time_s;
   mq1_field->counter[index] = mq1_h.counter;
   mq1_field->colour_mode[index] = mq1_h.colour_mode;
@@ -289,9 +289,9 @@ void fill_MQ1_single_fields(
     mq1_field->threshold[index*MQ1_FLOAT_LEN_THRESHOLD+i] = mq1_h.threshold[i];
   }
   /*header_extension_id is char[5]*/
-  snprintf(mq1_field->header_extension_id + index*MQ1_CHAR_LEN_HEADER_EXTENSION_ID, MQ1_CHAR_LEN_HEADER_EXTENSION_ID, mq1_h.header_extension_id);
+  snprintf(mq1_field->header_extension_id + index*MQ1_CHAR_LEN_HEADER_EXTENSION_ID, MQ1_CHAR_LEN_HEADER_EXTENSION_ID, "%s", mq1_h.header_extension_id);
   /*extended_timestamp is char[31]*/
-  snprintf(mq1_field->extended_timestamp + index*MQ1_CHAR_LEN_EXTENDED_TIMESTAMP, MQ1_CHAR_LEN_EXTENDED_TIMESTAMP, mq1_h.extended_timestamp);
+  snprintf(mq1_field->extended_timestamp + index*MQ1_CHAR_LEN_EXTENDED_TIMESTAMP, MQ1_CHAR_LEN_EXTENDED_TIMESTAMP, "%s", mq1_h.extended_timestamp);
   mq1_field->exposure_time_ns[index] = mq1_h.exposure_time_ns;
   mq1_field->bit_depth[index] = mq1_h.bit_depth;
 }
@@ -316,13 +316,13 @@ void fill_MQ1_quad_fields(
   mq1_field->det_x[index] = mq1_h.det_x;
   mq1_field->det_y[index] = mq1_h.det_y;
   /*pixel_depth is char[4]*/
-  snprintf(mq1_field->pixel_depth + index*MQ1_CHAR_LEN_PIXEL_DEPTH, MQ1_CHAR_LEN_PIXEL_DEPTH, mq1_h.pixel_depth);
+  snprintf(mq1_field->pixel_depth + index*MQ1_CHAR_LEN_PIXEL_DEPTH, MQ1_CHAR_LEN_PIXEL_DEPTH, "%s", mq1_h.pixel_depth);
   /*sensor_layout is char[7]*/
-  snprintf(mq1_field->sensor_layout + index*MQ1_CHAR_LEN_SENSOR_LAYOUT, MQ1_CHAR_LEN_SENSOR_LAYOUT, mq1_h.sensor_layout);
+  snprintf(mq1_field->sensor_layout + index*MQ1_CHAR_LEN_SENSOR_LAYOUT, MQ1_CHAR_LEN_SENSOR_LAYOUT, "%s", mq1_h.sensor_layout);
   /*chip_select is char[3]*/
-  snprintf(mq1_field->chip_select + index*MQ1_CHAR_LEN_CHIP_SELECT, MQ1_CHAR_LEN_CHIP_SELECT, mq1_h.chip_select);
+  snprintf(mq1_field->chip_select + index*MQ1_CHAR_LEN_CHIP_SELECT, MQ1_CHAR_LEN_CHIP_SELECT, "%s", mq1_h.chip_select);
   /*timestamp is char[27]*/
-  snprintf(mq1_field->timestamp + index*MQ1_CHAR_LEN_TIMESTAMP, MQ1_CHAR_LEN_TIMESTAMP, mq1_h.timestamp);
+  snprintf(mq1_field->timestamp + index*MQ1_CHAR_LEN_TIMESTAMP, MQ1_CHAR_LEN_TIMESTAMP, "%s", mq1_h.timestamp);
   mq1_field->exposure_time_s[index] = mq1_h.exposure_time_s;
   mq1_field->counter[index] = mq1_h.counter;
   mq1_field->colour_mode[index] = mq1_h.colour_mode;
@@ -332,9 +332,9 @@ void fill_MQ1_quad_fields(
     mq1_field->threshold[index*MQ1_FLOAT_LEN_THRESHOLD+i] = mq1_h.threshold[i];
   }
   /*header_extension_id is char[5]*/
-  snprintf(mq1_field->header_extension_id + index*MQ1_CHAR_LEN_HEADER_EXTENSION_ID, MQ1_CHAR_LEN_HEADER_EXTENSION_ID, mq1_h.header_extension_id);
+  snprintf(mq1_field->header_extension_id + index*MQ1_CHAR_LEN_HEADER_EXTENSION_ID, MQ1_CHAR_LEN_HEADER_EXTENSION_ID, "%s", mq1_h.header_extension_id);
   /*extended_timestamp is char[31]*/
-  snprintf(mq1_field->extended_timestamp + index*MQ1_CHAR_LEN_EXTENDED_TIMESTAMP, MQ1_CHAR_LEN_EXTENDED_TIMESTAMP, mq1_h.extended_timestamp);
+  snprintf(mq1_field->extended_timestamp + index*MQ1_CHAR_LEN_EXTENDED_TIMESTAMP, MQ1_CHAR_LEN_EXTENDED_TIMESTAMP, "%s", mq1_h.extended_timestamp);
   mq1_field->exposure_time_ns[index] = mq1_h.exposure_time_ns;
   mq1_field->bit_depth[index] = mq1_h.bit_depth;
 }
